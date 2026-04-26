@@ -15,9 +15,12 @@ jobs:
 
       - name: Restore
         run: dotnet restore
+        working-directory: CarManagementSystem
 
       - name: Build
         run: dotnet build
+        working-directory: CarManagementSystem
 
       - name: Test
         run: dotnet test
+        working-directory: CarManagementSystem
