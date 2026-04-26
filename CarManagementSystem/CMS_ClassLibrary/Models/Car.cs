@@ -41,7 +41,5 @@ public class Car
     public decimal EngineSize { get; set; }
     public int BootSpace { get; set; }
     public FuelTypes FuelType { get; set; }
-    public bool IsDeleted { get; set; }
-
 
 }
