@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36221.1 d17.14
+VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS_ClassLibrary", "CMS_ClassLibrary\CMS_ClassLibrary.csproj", "{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMS_Testing", "CMS-Testing\CMS_Testing.csproj", "{18A546F4-E4B2-48B8-B2E5-859138672130}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18A546F4-E4B2-48B8-B2E5-859138672130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18A546F4-E4B2-48B8-B2E5-859138672130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18A546F4-E4B2-48B8-B2E5-859138672130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18A546F4-E4B2-48B8-B2E5-859138672130}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
