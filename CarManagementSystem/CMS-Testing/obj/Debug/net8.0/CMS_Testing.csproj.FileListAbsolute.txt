@@ -106,3 +106,11 @@ C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\obj\Debug\ne
 C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\obj\Debug\net8.0\CMS_Testing.pdb
 C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\obj\Debug\net8.0\CMS_Testing.genruntimeconfig.cache
 C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\obj\Debug\net8.0\ref\CMS_Testing.dll
+C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\bin\Debug\net8.0\Dapper.dll
+C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\bin\Debug\net8.0\Npgsql.dll
+C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS-Testing\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll

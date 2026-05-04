@@ -3,40 +3,44 @@
   "WorkspaceRootPath": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{18A546F4-E4B2-48B8-B2E5-859138672130}|CMS-Testing\\CMS_Testing.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms-testing\\services\\carservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{18A546F4-E4B2-48B8-B2E5-859138672130}|CMS-Testing\\CMS_Testing.csproj|solutionrelative:cms-testing\\services\\carservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|solutionrelative:cms_webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|solutionrelative:cms_webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_webapi\\cms_webapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|solutionrelative:cms_webapi\\cms_webapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_classlibrary\\dataaccess\\dappertypehandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|solutionrelative:cms_classlibrary\\dataaccess\\dappertypehandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_classlibrary\\dataaccess\\postgresqlcarrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|solutionrelative:cms_classlibrary\\dataaccess\\postgresqlcarrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_classlibrary\\repository\\carrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|solutionrelative:cms_classlibrary\\repository\\carrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_classlibrary\\services\\carservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|solutionrelative:cms_classlibrary\\services\\carservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_webapi\\cms_webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|solutionrelative:cms_webapi\\cms_webapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_classlibrary\\services\\icarservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|solutionrelative:cms_classlibrary\\services\\icarservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_classlibrary\\repository\\icarrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|solutionrelative:cms_classlibrary\\repository\\icarrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18A546F4-E4B2-48B8-B2E5-859138672130}|CMS-Testing\\CMS_Testing.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms-testing\\fakes\\fakecarrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{18A546F4-E4B2-48B8-B2E5-859138672130}|CMS-Testing\\CMS_Testing.csproj|solutionrelative:cms-testing\\fakes\\fakecarrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{18A546F4-E4B2-48B8-B2E5-859138672130}|CMS-Testing\\CMS_Testing.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms-testing\\cms_testing.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{18A546F4-E4B2-48B8-B2E5-859138672130}|CMS-Testing\\CMS_Testing.csproj|solutionrelative:cms-testing\\cms_testing.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|solutionrelative:cms_webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_classlibrary\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|solutionrelative:cms_classlibrary\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_classlibrary\\cms_classlibrary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{CAA746B9-AB52-4B5E-B573-CEFD3AA4300D}|CMS_ClassLibrary\\CMS_ClassLibrary.csproj|solutionrelative:cms_classlibrary\\cms_classlibrary.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|c:\\dev\\projects\\carmanagementsystem\\carmanagementsystem\\cms_webapi\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52AA8ED6-D8FF-44DD-A127-73ECB2E425ED}|CMS_WebAPI\\CMS_WebAPI.csproj|solutionrelative:cms_webapi\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,132 +50,140 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ICarService.cs",
-              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Services\\ICarService.cs",
-              "RelativeDocumentMoniker": "CMS_ClassLibrary\\Services\\ICarService.cs",
-              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Services\\ICarService.cs",
-              "RelativeToolTip": "CMS_ClassLibrary\\Services\\ICarService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAgAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T08:40:50.229Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ICarRepository.cs",
-              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Repository\\ICarRepository.cs",
-              "RelativeDocumentMoniker": "CMS_ClassLibrary\\Repository\\ICarRepository.cs",
-              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Repository\\ICarRepository.cs",
-              "RelativeToolTip": "CMS_ClassLibrary\\Repository\\ICarRepository.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAUwAYAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T11:46:38.751Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FakeCarRepository.cs",
-              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS-Testing\\Fakes\\FakeCarRepository.cs",
-              "RelativeDocumentMoniker": "CMS-Testing\\Fakes\\FakeCarRepository.cs",
-              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS-Testing\\Fakes\\FakeCarRepository.cs",
-              "RelativeToolTip": "CMS-Testing\\Fakes\\FakeCarRepository.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAWwCcAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T10:42:25.258Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CarServiceTests.cs",
-              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS-Testing\\Services\\CarServiceTests.cs",
-              "RelativeDocumentMoniker": "CMS-Testing\\Services\\CarServiceTests.cs",
-              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS-Testing\\Services\\CarServiceTests.cs",
-              "RelativeToolTip": "CMS-Testing\\Services\\CarServiceTests.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAAwFwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T10:42:05.916Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CMS_Testing",
-              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS-Testing\\CMS_Testing.csproj",
-              "RelativeDocumentMoniker": "CMS-Testing\\CMS_Testing.csproj",
-              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS-Testing\\CMS_Testing.csproj",
-              "RelativeToolTip": "CMS-Testing\\CMS_Testing.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-26T10:36:53.676Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CarService.cs",
-              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Services\\CarService.cs",
-              "RelativeDocumentMoniker": "CMS_ClassLibrary\\Services\\CarService.cs",
-              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Services\\CarService.cs",
-              "RelativeToolTip": "CMS_ClassLibrary\\Services\\CarService.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAADgvyoAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T08:25:07.95Z",
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "CMS_WebAPI\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\Properties\\launchSettings.json",
+              "RelativeToolTip": "CMS_WebAPI\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAswA8AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-04T12:28:26.206Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "CMS_WebAPI\\Program.cs",
+              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\Program.cs",
+              "RelativeToolTip": "CMS_WebAPI\\Program.cs",
+              "ViewState": "AgIAABsAAACA/mQ60iskwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T17:33:05.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CMS_WebAPI.http",
+              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\CMS_WebAPI.http",
+              "RelativeDocumentMoniker": "CMS_WebAPI\\CMS_WebAPI.http",
+              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\CMS_WebAPI.http",
+              "RelativeToolTip": "CMS_WebAPI\\CMS_WebAPI.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-05-04T12:20:58.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DapperTypeHandlers.cs",
+              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\DataAccess\\DapperTypeHandlers.cs",
+              "RelativeDocumentMoniker": "CMS_ClassLibrary\\DataAccess\\DapperTypeHandlers.cs",
+              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\DataAccess\\DapperTypeHandlers.cs",
+              "RelativeToolTip": "CMS_ClassLibrary\\DataAccess\\DapperTypeHandlers.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAmwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T12:07:31.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "CarRepository.cs",
               "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Repository\\CarRepository.cs",
               "RelativeDocumentMoniker": "CMS_ClassLibrary\\Repository\\CarRepository.cs",
               "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Repository\\CarRepository.cs",
               "RelativeToolTip": "CMS_ClassLibrary\\Repository\\CarRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T07:43:40.515Z",
+              "WhenOpened": "2026-05-04T12:01:37.899Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Car.cs",
-              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Models\\Car.cs",
-              "RelativeDocumentMoniker": "CMS_ClassLibrary\\Models\\Car.cs",
-              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Models\\Car.cs",
-              "RelativeToolTip": "CMS_ClassLibrary\\Models\\Car.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAArwCAAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T13:22:45.875Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "CMS_WebAPI\\appsettings.json",
+              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\appsettings.json",
+              "RelativeToolTip": "CMS_WebAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-04T11:27:47.821Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "CMS_ClassLibrary.csproj",
-              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\CMS_ClassLibrary.csproj",
-              "RelativeDocumentMoniker": "CMS_ClassLibrary\\CMS_ClassLibrary.csproj",
-              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\CMS_ClassLibrary.csproj",
-              "RelativeToolTip": "CMS_ClassLibrary\\CMS_ClassLibrary.csproj",
+              "Title": "Car.cs",
+              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Models\\Car.cs",
+              "RelativeDocumentMoniker": "CMS_ClassLibrary\\Models\\Car.cs",
+              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\Models\\Car.cs",
+              "RelativeToolTip": "CMS_ClassLibrary\\Models\\Car.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAA+wC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-04T11:03:07.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CMS_WebAPI",
+              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\CMS_WebAPI.csproj",
+              "RelativeDocumentMoniker": "CMS_WebAPI\\CMS_WebAPI.csproj",
+              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\CMS_WebAPI.csproj",
+              "RelativeToolTip": "CMS_WebAPI\\CMS_WebAPI.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-25T13:21:50.995Z",
+              "WhenOpened": "2026-05-03T18:30:45.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CarsController.cs",
+              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\Controllers\\CarsController.cs",
+              "RelativeDocumentMoniker": "CMS_WebAPI\\Controllers\\CarsController.cs",
+              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_WebAPI\\Controllers\\CarsController.cs",
+              "RelativeToolTip": "CMS_WebAPI\\Controllers\\CarsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T17:43:29.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PostgreSqlCarRepository.cs",
+              "DocumentMoniker": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\DataAccess\\PostgreSqlCarRepository.cs",
+              "RelativeDocumentMoniker": "CMS_ClassLibrary\\DataAccess\\PostgreSqlCarRepository.cs",
+              "ToolTip": "C:\\DEV\\Projects\\CarManagementSystem\\CarManagementSystem\\CMS_ClassLibrary\\DataAccess\\PostgreSqlCarRepository.cs",
+              "RelativeToolTip": "CMS_ClassLibrary\\DataAccess\\PostgreSqlCarRepository.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAuwE8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T16:26:37.731Z",
               "EditorCaption": ""
             }
           ]

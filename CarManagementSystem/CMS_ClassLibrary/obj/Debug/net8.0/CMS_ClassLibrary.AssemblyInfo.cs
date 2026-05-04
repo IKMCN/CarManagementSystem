@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CMS_ClassLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8b87e9a954cb075331a4b6911807ef6d6ac0415")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b39a1c2c84c23c9bb8926f283b34a08223cd06a7")]
 [assembly: System.Reflection.AssemblyProductAttribute("CMS_ClassLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CMS_ClassLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

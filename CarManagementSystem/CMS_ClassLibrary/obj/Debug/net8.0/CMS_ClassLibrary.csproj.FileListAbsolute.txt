@@ -10,3 +10,4 @@ C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS_ClassLibrary\obj\Deb
 C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS_ClassLibrary\obj\Debug\net8.0\refint\CMS_ClassLibrary.dll
 C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS_ClassLibrary\obj\Debug\net8.0\CMS_ClassLibrary.pdb
 C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS_ClassLibrary\obj\Debug\net8.0\ref\CMS_ClassLibrary.dll
+C:\DEV\Projects\CarManagementSystem\CarManagementSystem\CMS_ClassLibrary\obj\Debug\net8.0\CMS_ClassLibrary.csproj.AssemblyReference.cache

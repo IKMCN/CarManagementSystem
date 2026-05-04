@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMS — Car Management System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-0: #0a0a0a;
+    --bg-1: #111111;
+    --bg-2: #1a1a1a;
+    --bg-3: #222222;
+    --border: #2a2a2a;
+    --border-bright: #3a3a3a;
+    --amber: #f59e0b;
+    --amber-dim: #d97706;
+    --amber-glow: rgba(245,158,11,0.12);
+    --amber-glow-strong: rgba(245,158,11,0.22);
+    --text-primary: #e8e8e8;
+    --text-secondary: #888;
+    --text-dim: #555;
+    --red: #ef4444;
+    --green: #22c55e;
+    --blue: #60a5fa;
+    --purple: #a78bfa;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+    --display: 'Bebas Neue', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-0);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    font-size: 14px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: var(--display);
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: var(--amber);
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .logo span {
+    color: var(--text-dim);
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+  .base-url-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    max-width: 520px;
+    margin-left: auto;
+  }
+
+  .base-url-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .base-url-input {
+    flex: 1;
+    background: var(--bg-2);
+    border: 1px solid var(--border-bright);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .base-url-input:focus { border-color: var(--amber); }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--text-dim);
+    flex-shrink: 0;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  .status-dot.ok   { background: var(--green); box-shadow: 0 0 6px var(--green); }
+  .status-dot.err  { background: var(--red);   box-shadow: 0 0 6px var(--red); }
+  .status-dot.busy { background: var(--amber);  box-shadow: 0 0 6px var(--amber); animation: pulse 0.8s infinite; }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* ── LAYOUT ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr;
+    height: calc(100vh - 60px);
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    overflow-y: auto;
+    background: var(--bg-1);
+  }
+
+  .sidebar-section {
+    padding: 0 16px 8px;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 12px;
+  }
+
+  .endpoint-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text-secondary);
+    font-family: var(--sans);
+    font-size: 13px;
+    transition: background 0.15s, color 0.15s;
+    border-left: 2px solid transparent;
+  }
+  .endpoint-btn:hover { background: var(--bg-2); color: var(--text-primary); }
+  .endpoint-btn.active {
+    background: var(--amber-glow);
+    color: var(--amber);
+    border-left-color: var(--amber);
+  }
+
+  .method-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    min-width: 40px;
+    text-align: center;
+  }
+  .GET    { background: rgba(96,165,250,0.15); color: var(--blue); }
+  .POST   { background: rgba(34,197,94,0.15);  color: var(--green); }
+  .PUT    { background: rgba(245,158,11,0.15); color: var(--amber); }
+  .DELETE { background: rgba(239,68,68,0.15);  color: var(--red); }
+
+  /* ── REQUEST PANEL ── */
+  .request-panel {
+    border-right: 1px solid var(--border);
+    padding: 28px 28px;
+    overflow-y: auto;
+  }
+
+  .panel-title {
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .panel-path {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+  }
+
+  .field-group {
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+
+  input[type=text],
+  input[type=number],
+  select,
+  textarea {
+    width: 100%;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 9px 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--amber);
+    background: var(--bg-3);
+  }
+  select { cursor: pointer; }
+  option { background: var(--bg-2); }
+  textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .field-row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--amber-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+  }
+
+  /* ── SEND BUTTON ── */
+  .send-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    background: var(--amber);
+    color: #000;
+    font-family: var(--display);
+    font-size: 16px;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .send-btn:hover { background: var(--amber-dim); }
+  .send-btn:active { transform: scale(0.99); }
+  .send-btn:disabled { background: var(--bg-3); color: var(--text-dim); cursor: not-allowed; }
+
+  /* ── RESPONSE PANEL ── */
+  .response-panel {
+    padding: 28px;
+    overflow-y: auto;
+    background: var(--bg-0);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .response-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+  }
+
+  .response-title {
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    color: var(--text-primary);
+    flex: 1;
+  }
+
+  .status-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .status-2xx { background: rgba(34,197,94,0.15); color: var(--green); }
+  .status-4xx { background: rgba(239,68,68,0.15); color: var(--red); }
+  .status-5xx { background: rgba(239,68,68,0.2); color: var(--red); }
+
+  .latency {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .copy-btn {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 4px 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .copy-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+  .response-body {
+    flex: 1;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.7;
+    overflow: auto;
+    white-space: pre;
+    min-height: 200px;
+    position: relative;
+  }
+
+  .response-body.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 13px;
+    font-family: var(--sans);
+  }
+
+  .response-body .token-key    { color: var(--blue); }
+  .response-body .token-str    { color: var(--green); }
+  .response-body .token-num    { color: var(--amber); }
+  .response-body .token-bool   { color: var(--purple); }
+  .response-body .token-null   { color: var(--red); }
+  .response-body .token-brace  { color: var(--text-secondary); }
+
+  /* Empty state graphic */
+  .empty-graphic {
+    text-align: center;
+    color: var(--text-dim);
+  }
+  .empty-graphic svg { opacity: 0.2; margin-bottom: 12px; }
+  .empty-graphic p { font-family: var(--mono); font-size: 12px; }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+  .hidden { display: none !important; }
+
+  /* Fade-in for response */
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  .fade-in { animation: fadeIn 0.2s ease; }
+
+  /* Response meta strip */
+  .meta-strip {
+    display: flex;
+    gap: 16px;
+    padding: 10px 14px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    flex-shrink: 0;
+  }
+  .meta-strip .meta-val { color: var(--text-secondary); }
+  .meta-strip + .response-body { border-radius: 0 0 6px 6px; }
+
+  .info-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--amber-dim);
+    background: var(--amber-glow);
+    border: 1px solid var(--amber-dim);
+    border-radius: 2px;
+    padding: 1px 5px;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+  }
+
+  .hint {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    font-family: var(--mono);
+  }
+
+  .err-inline {
+    color: var(--red);
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="logo">CMS <span>/ API CONSOLE</span></div>
+  <div class="base-url-wrap">
+    <span class="base-url-label">BASE URL</span>
+    <input class="base-url-input" id="baseUrl" type="text" value="https://localhost:7042" placeholder="https://localhost:7042" />
+    <div class="status-dot" id="statusDot" title="Connection status"></div>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ── SIDEBAR ── -->
+  <nav class="sidebar">
+    <div class="sidebar-section">Cars</div>
+
+    <button class="endpoint-btn active" data-view="get-all" onclick="switchView('get-all', this)">
+      <span class="method-badge GET">GET</span> All Cars
+    </button>
+    <button class="endpoint-btn" data-view="get-by-id" onclick="switchView('get-by-id', this)">
+      <span class="method-badge GET">GET</span> Car by ID
+    </button>
+    <button class="endpoint-btn" data-view="post" onclick="switchView('post', this)">
+      <span class="method-badge POST">POST</span> Add Car
+    </button>
+    <button class="endpoint-btn" data-view="put" onclick="switchView('put', this)">
+      <span class="method-badge PUT">PUT</span> Update Car
+    </button>
+    <button class="endpoint-btn" data-view="delete" onclick="switchView('delete', this)">
+      <span class="method-badge DELETE">DEL</span> Delete Car
+    </button>
+  </nav>
+
+  <!-- ── REQUEST PANEL ── -->
+  <div class="request-panel">
+
+    <!-- GET ALL -->
+    <div id="view-get-all">
+      <div class="panel-title">ALL CARS</div>
+      <div class="panel-path"><span class="method-badge GET" style="margin-right:6px">GET</span>/api/Cars</div>
+      <p style="color:var(--text-dim);font-size:13px;line-height:1.6">Returns the full list of cars in the repository. No parameters required.</p>
+      <button class="send-btn" onclick="doGetAll()">▶ SEND REQUEST</button>
+    </div>
+
+    <!-- GET BY ID -->
+    <div id="view-get-by-id" class="hidden">
+      <div class="panel-title">GET CAR</div>
+      <div class="panel-path"><span class="method-badge GET" style="margin-right:6px">GET</span>/api/Cars/{id}</div>
+      <div class="field-group">
+        <label>Car ID <span style="color:var(--red)">*</span></label>
+        <input type="text" id="getById-id" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+        <div class="hint">UUID format</div>
+      </div>
+      <button class="send-btn" onclick="doGetById()">▶ SEND REQUEST</button>
+    </div>
+
+    <!-- POST -->
+    <div id="view-post" class="hidden">
+      <div class="panel-title">ADD CAR</div>
+      <div class="panel-path"><span class="method-badge POST" style="margin-right:6px">POST</span>/api/Cars</div>
+      <div id="car-form-post"><!-- injected --></div>
+      <button class="send-btn" onclick="doPost()">▶ SEND REQUEST</button>
+    </div>
+
+    <!-- PUT -->
+    <div id="view-put" class="hidden">
+      <div class="panel-title">UPDATE CAR</div>
+      <div class="panel-path"><span class="method-badge PUT" style="margin-right:6px">PUT</span>/api/Cars/{id}</div>
+      <div class="field-group">
+        <label>Car ID <span style="color:var(--red)">*</span></label>
+        <input type="text" id="putId" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+        <div class="hint">UUID of the car to update</div>
+      </div>
+      <div class="divider"></div>
+      <div class="section-label">Updated Fields</div>
+      <div id="car-form-put"><!-- injected --></div>
+      <button class="send-btn" onclick="doPut()">▶ SEND REQUEST</button>
+    </div>
+
+    <!-- DELETE -->
+    <div id="view-delete" class="hidden">
+      <div class="panel-title">DELETE CAR</div>
+      <div class="panel-path"><span class="method-badge DELETE" style="margin-right:6px">DEL</span>/api/Cars/{id}</div>
+      <p style="color:var(--text-dim);font-size:13px;line-height:1.6;margin-bottom:16px">Permanently removes the car with the specified ID from the repository.</p>
+      <div class="field-group">
+        <label>Car ID <span style="color:var(--red)">*</span></label>
+        <input type="text" id="deleteId" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+        <div class="hint">UUID format</div>
+      </div>
+      <button class="send-btn" style="background:var(--red); color:#fff" onclick="doDelete()">▶ SEND REQUEST</button>
+    </div>
+
+  </div>
+
+  <!-- ── RESPONSE PANEL ── -->
+  <div class="response-panel">
+    <div class="response-header">
+      <div class="response-title">RESPONSE</div>
+      <span id="statusBadge" class="hidden"></span>
+      <span id="latency" class="latency hidden"></span>
+      <button class="copy-btn hidden" id="copyBtn" onclick="copyResponse()">COPY</button>
+    </div>
+
+    <div id="metaStrip" class="meta-strip hidden">
+      <span>METHOD <span class="meta-val" id="metaMethod">—</span></span>
+      <span>URL <span class="meta-val" id="metaUrl" style="word-break:break-all">—</span></span>
+    </div>
+
+    <div class="response-body empty" id="responseBody">
+      <div class="empty-graphic">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M9 9h6M9 13h4"/>
+        </svg>
+        <p>Send a request to see the response</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── ENUMS ──
+const GEARBOX   = ['Manual', 'Automatic'];
+const BODY_TYPE = ['Saloon', 'Hatchback', 'Estate', 'Coupe', 'Convertible', 'SUV', 'MPV', 'Van'];
+const FUEL_TYPE = ['Petrol', 'Diesel', 'Electric', 'Hybrid', 'Hydrogen'];
+
+// ── CAR FORM BUILDER ──
+function buildCarForm(prefix) {
+  return `
+    <div class="section-label">Identity</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Make</label>
+        <input type="text" id="${prefix}-make" placeholder="e.g. Toyota" />
+      </div>
+      <div class="field-group">
+        <label>Model</label>
+        <input type="text" id="${prefix}-model" placeholder="e.g. Corolla" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Colour</label>
+        <input type="text" id="${prefix}-colour" placeholder="e.g. Midnight Blue" />
+      </div>
+      <div class="field-group">
+        <label>Year</label>
+        <input type="number" id="${prefix}-year" placeholder="2024" min="1900" max="2030" />
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-label">Specification</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Body Type</label>
+        <select id="${prefix}-bodyType">
+          ${BODY_TYPE.map((b,i)=>`<option value="${i}">${b}</option>`).join('')}
+        </select>
+      </div>
+      <div class="field-group">
+        <label>Gearbox</label>
+        <select id="${prefix}-gearbox">
+          ${GEARBOX.map((g,i)=>`<option value="${i}">${g}</option>`).join('')}
+        </select>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Fuel Type</label>
+        <select id="${prefix}-fuelType">
+          ${FUEL_TYPE.map((f,i)=>`<option value="${i}">${f}</option>`).join('')}
+        </select>
+      </div>
+      <div class="field-group">
+        <label>Engine Size (L)</label>
+        <input type="number" id="${prefix}-engineSize" placeholder="2.0" step="0.1" min="0" />
+      </div>
+    </div>
+    <div class="field-row-3">
+      <div class="field-group">
+        <label>Doors</label>
+        <input type="number" id="${prefix}-doors" placeholder="4" min="1" max="10" />
+      </div>
+      <div class="field-group">
+        <label>Seats</label>
+        <input type="number" id="${prefix}-seats" placeholder="5" min="1" max="20" />
+      </div>
+      <div class="field-group">
+        <label>Boot (L)</label>
+        <input type="number" id="${prefix}-bootSpace" placeholder="400" min="0" />
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-label">Commercial</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Price (£)</label>
+        <input type="number" id="${prefix}-price" placeholder="18500.00" step="0.01" min="0" />
+      </div>
+      <div class="field-group">
+        <label>Mileage</label>
+        <input type="number" id="${prefix}-mileage" placeholder="35000" min="0" />
+      </div>
+    </div>
+  `;
+}
+
+function readCarForm(prefix) {
+  const num   = (id) => { const v = document.getElementById(id).value; return v === '' ? 0 : parseFloat(v); };
+  const str   = (id) => document.getElementById(id).value.trim();
+  const int   = (id) => { const v = document.getElementById(id).value; return v === '' ? 0 : parseInt(v, 10); };
+  const sel   = (id) => parseInt(document.getElementById(id).value, 10);
+  return {
+    make:       str(`${prefix}-make`),
+    model:      str(`${prefix}-model`),
+    colour:     str(`${prefix}-colour`),
+    year:       int(`${prefix}-year`),
+    price:      num(`${prefix}-price`),
+    mileage:    int(`${prefix}-mileage`),
+    gearbox:    sel(`${prefix}-gearbox`),
+    bodyType:   sel(`${prefix}-bodyType`),
+    doors:      int(`${prefix}-doors`),
+    seats:      int(`${prefix}-seats`),
+    engineSize: num(`${prefix}-engineSize`),
+    bootSpace:  int(`${prefix}-bootSpace`),
+    fuelType:   sel(`${prefix}-fuelType`),
+  };
+}
+
+// Inject forms
+document.getElementById('car-form-post').innerHTML = buildCarForm('post');
+document.getElementById('car-form-put').innerHTML  = buildCarForm('put');
+
+// ── VIEW SWITCHING ──
+const views = ['get-all','get-by-id','post','put','delete'];
+function switchView(name, btn) {
+  views.forEach(v => {
+    document.getElementById('view-'+v).classList.toggle('hidden', v !== name);
+  });
+  document.querySelectorAll('.endpoint-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  clearResponse();
+}
+
+// ── BASE URL ──
+function getBase() {
+  return document.getElementById('baseUrl').value.replace(/\/$/, '');
+}
+
+// ── RESPONSE DISPLAY ──
+let lastResponseText = '';
+
+function setStatus(code) {
+  const dot = document.getElementById('statusDot');
+  dot.className = 'status-dot ' + (code >= 200 && code < 300 ? 'ok' : 'err');
+  setTimeout(() => { dot.className = 'status-dot'; }, 3000);
+}
+
+function showResponse(method, url, status, ms, body) {
+  const badge = document.getElementById('statusBadge');
+  const lat   = document.getElementById('latency');
+  const copy  = document.getElementById('copyBtn');
+  const meta  = document.getElementById('metaStrip');
+  const rb    = document.getElementById('responseBody');
+
+  badge.className = 'status-badge ' + (status >= 200 && status < 300 ? 'status-2xx' : status >= 400 && status < 500 ? 'status-4xx' : 'status-5xx');
+  badge.textContent = status;
+  badge.classList.remove('hidden');
+
+  lat.textContent = ms + 'ms';
+  lat.classList.remove('hidden');
+  copy.classList.remove('hidden');
+
+  document.getElementById('metaMethod').textContent = method;
+  document.getElementById('metaUrl').textContent    = url;
+  meta.classList.remove('hidden');
+
+  let pretty = body;
+  try { pretty = JSON.stringify(JSON.parse(body), null, 2); } catch {}
+  lastResponseText = pretty;
+
+  rb.className = 'response-body fade-in';
+  rb.innerHTML = syntaxHighlight(pretty);
+
+  setStatus(status);
+}
+
+function showError(method, url, msg) {
+  const rb = document.getElementById('responseBody');
+  const meta = document.getElementById('metaStrip');
+  document.getElementById('metaMethod').textContent = method;
+  document.getElementById('metaUrl').textContent    = url;
+  meta.classList.remove('hidden');
+  document.getElementById('statusBadge').classList.add('hidden');
+  document.getElementById('latency').classList.add('hidden');
+  document.getElementById('copyBtn').classList.add('hidden');
+  rb.className = 'response-body fade-in';
+  rb.innerHTML = `<span style="color:var(--red)">// Network error\n${escHtml(msg)}</span>`;
+  document.getElementById('statusDot').className = 'status-dot err';
+  setTimeout(() => { document.getElementById('statusDot').className = 'status-dot'; }, 3000);
+}
+
+function clearResponse() {
+  const rb = document.getElementById('responseBody');
+  rb.className = 'response-body empty';
+  rb.innerHTML = `<div class="empty-graphic"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h4"/></svg><p>Send a request to see the response</p></div>`;
+  document.getElementById('statusBadge').classList.add('hidden');
+  document.getElementById('latency').classList.add('hidden');
+  document.getElementById('copyBtn').classList.add('hidden');
+  document.getElementById('metaStrip').classList.add('hidden');
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function syntaxHighlight(json) {
+  const esc = escHtml(json);
+  return esc.replace(
+    /("(\\u[\da-fA-F]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+\.?\d*(?:[eE][+-]?\d+)?)/g,
+    (match) => {
+      if (/^"/.test(match)) {
+        if (/:$/.test(match)) return `<span class="token-key">${match}</span>`;
+        return `<span class="token-str">${match}</span>`;
+      }
+      if (/true|false/.test(match)) return `<span class="token-bool">${match}</span>`;
+      if (/null/.test(match))       return `<span class="token-null">${match}</span>`;
+      return `<span class="token-num">${match}</span>`;
+    }
+  );
+}
+
+function copyResponse() {
+  navigator.clipboard.writeText(lastResponseText).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'COPIED';
+    setTimeout(() => { btn.textContent = 'COPY'; }, 1500);
+  });
+}
+
+// ── API CALLS ──
+async function apiFetch(method, url, body) {
+  const dot = document.getElementById('statusDot');
+  dot.className = 'status-dot busy';
+  const t0 = Date.now();
+  try {
+    const opts = {
+      method,
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    };
+    if (body !== undefined) opts.body = JSON.stringify(body);
+    const res  = await fetch(url, opts);
+    const ms   = Date.now() - t0;
+    const text = await res.text();
+    showResponse(method, url, res.status, ms, text);
+  } catch (e) {
+    showError(method, url, e.message);
+  }
+}
+
+async function doGetAll() {
+  const url = `${getBase()}/api/Cars`;
+  await apiFetch('GET', url);
+}
+
+async function doGetById() {
+  const id = document.getElementById('getById-id').value.trim();
+  if (!id) { alert('Please enter a Car ID.'); return; }
+  const url = `${getBase()}/api/Cars/${id}`;
+  await apiFetch('GET', url);
+}
+
+async function doPost() {
+  const car = readCarForm('post');
+  const url = `${getBase()}/api/Cars`;
+  await apiFetch('POST', url, car);
+}
+
+async function doPut() {
+  const id = document.getElementById('putId').value.trim();
+  if (!id) { alert('Please enter a Car ID.'); return; }
+  const car = { id, ...readCarForm('put') };
+  const url = `${getBase()}/api/Cars/${id}`;
+  await apiFetch('PUT', url, car);
+}
+
+async function doDelete() {
+  const id = document.getElementById('deleteId').value.trim();
+  if (!id) { alert('Please enter a Car ID.'); return; }
+  const url = `${getBase()}/api/Cars/${id}`;
+  await apiFetch('DELETE', url);
+}
+</script>
+
+</body>
+</html>

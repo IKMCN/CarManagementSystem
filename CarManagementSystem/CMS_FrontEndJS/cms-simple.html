@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #333;
+    }
+
+    h1 { border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+    h2 { margin-top: 30px; }
+
+    label {
+      display: inline-block;
+      width: 120px;
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      width: 200px;
+      padding: 4px 6px;
+      margin-bottom: 8px;
+    }
+
+    button {
+      padding: 6px 14px;
+      margin-right: 6px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    th { background: #f0f0f0; }
+
+    tr:hover { background: #f9f9f9; cursor: pointer; }
+    tr.selected { background: #d9eaff; }
+
+    .message {
+      padding: 8px 12px;
+      margin: 10px 0;
+      border: 1px solid #bbb;
+      background: #f9f9f9;
+      display: none;
+    }
+
+    #edit-section { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>Car Management System</h1>
+
+  <div class="message" id="message"></div>
+
+  <!-- ── ADD CAR ── -->
+  <h2>Add a Car</h2>
+
+  <div>
+    <label>Make</label>
+    <input type="text" id="add-make" placeholder="Toyota" /><br>
+
+    <label>Model</label>
+    <input type="text" id="add-model" placeholder="Corolla" /><br>
+
+    <label>Colour</label>
+    <input type="text" id="add-colour" placeholder="Blue" /><br>
+
+    <label>Year</label>
+    <input type="number" id="add-year" placeholder="2022" /><br>
+
+    <label>Price (£)</label>
+    <input type="number" id="add-price" placeholder="15000" /><br>
+
+    <label>Mileage</label>
+    <input type="number" id="add-mileage" placeholder="30000" /><br>
+
+    <label>Body Type</label>
+    <select id="add-bodyType">
+      <option value="0">Saloon</option>
+      <option value="1">Hatchback</option>
+      <option value="2">Estate</option>
+      <option value="3">Coupe</option>
+      <option value="4">Convertible</option>
+      <option value="5">SUV</option>
+      <option value="6">MPV</option>
+      <option value="7">Van</option>
+    </select><br>
+
+    <label>Gearbox</label>
+    <select id="add-gearbox">
+      <option value="0">Manual</option>
+      <option value="1">Automatic</option>
+    </select><br>
+
+    <label>Fuel Type</label>
+    <select id="add-fuelType">
+      <option value="0">Petrol</option>
+      <option value="1">Diesel</option>
+      <option value="2">Electric</option>
+      <option value="3">Hybrid</option>
+      <option value="4">Hydrogen</option>
+    </select><br>
+
+    <label>Doors</label>
+    <input type="number" id="add-doors" placeholder="4" /><br>
+
+    <label>Seats</label>
+    <input type="number" id="add-seats" placeholder="5" /><br>
+
+    <label>Engine Size (L)</label>
+    <input type="number" id="add-engineSize" placeholder="2.0" step="0.1" /><br>
+
+    <label>Boot Space (L)</label>
+    <input type="number" id="add-bootSpace" placeholder="400" /><br>
+
+    <br>
+    <button onclick="addCar()">Add Car</button>
+  </div>
+
+  <!-- ── CAR LIST ── -->
+  <h2>All Cars</h2>
+  <button onclick="loadCars()">Refresh List</button>
+
+  <table id="cars-table">
+    <thead>
+      <tr>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Colour</th>
+        <th>Year</th>
+        <th>Price</th>
+        <th>Mileage</th>
+        <th>Fuel</th>
+        <th>Gearbox</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="cars-body">
+      <tr><td colspan="9">Click "Refresh List" to load cars.</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ── EDIT CAR ── -->
+  <div id="edit-section">
+    <h2>Edit Car</h2>
+    <p>Editing ID: <strong id="edit-id-display"></strong></p>
+    <input type="hidden" id="edit-id" />
+
+    <div>
+      <label>Make</label>
+      <input type="text" id="edit-make" /><br>
+
+      <label>Model</label>
+      <input type="text" id="edit-model" /><br>
+
+      <label>Colour</label>
+      <input type="text" id="edit-colour" /><br>
+
+      <label>Year</label>
+      <input type="number" id="edit-year" /><br>
+
+      <label>Price (£)</label>
+      <input type="number" id="edit-price" /><br>
+
+      <label>Mileage</label>
+      <input type="number" id="edit-mileage" /><br>
+
+      <label>Body Type</label>
+      <select id="edit-bodyType">
+        <option value="0">Saloon</option>
+        <option value="1">Hatchback</option>
+        <option value="2">Estate</option>
+        <option value="3">Coupe</option>
+        <option value="4">Convertible</option>
+        <option value="5">SUV</option>
+        <option value="6">MPV</option>
+        <option value="7">Van</option>
+      </select><br>
+
+      <label>Gearbox</label>
+      <select id="edit-gearbox">
+        <option value="0">Manual</option>
+        <option value="1">Automatic</option>
+      </select><br>
+
+      <label>Fuel Type</label>
+      <select id="edit-fuelType">
+        <option value="0">Petrol</option>
+        <option value="1">Diesel</option>
+        <option value="2">Electric</option>
+        <option value="3">Hybrid</option>
+        <option value="4">Hydrogen</option>
+      </select><br>
+
+      <label>Doors</label>
+      <input type="number" id="edit-doors" /><br>
+
+      <label>Seats</label>
+      <input type="number" id="edit-seats" /><br>
+
+      <label>Engine Size (L)</label>
+      <input type="number" id="edit-engineSize" step="0.1" /><br>
+
+      <label>Boot Space (L)</label>
+      <input type="number" id="edit-bootSpace" /><br>
+
+      <br>
+      <button onclick="updateCar()">Save Changes</button>
+      <button onclick="cancelEdit()">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    const BASE_URL = 'https://localhost:7042';
+
+    const BODY_TYPES = ['Saloon', 'Hatchback', 'Estate', 'Coupe', 'Convertible', 'SUV', 'MPV', 'Van'];
+    const GEARBOXES  = ['Manual', 'Automatic'];
+    const FUEL_TYPES = ['Petrol', 'Diesel', 'Electric', 'Hybrid', 'Hydrogen'];
+
+    // ── SHOW A MESSAGE ──
+    function showMessage(text) {
+      var box = document.getElementById('message');
+      box.textContent = text;
+      box.style.display = 'block';
+      setTimeout(function() { box.style.display = 'none'; }, 3000);
+    }
+
+    // ── LOAD ALL CARS ──
+    function loadCars() {
+      fetch(BASE_URL + '/api/Cars')
+        .then(function(response) { return response.json(); })
+        .then(function(cars) { renderTable(cars); })
+        .catch(function() { showMessage('Could not connect to the API.'); });
+    }
+
+    // ── RENDER THE TABLE ──
+    function renderTable(cars) {
+      var tbody = document.getElementById('cars-body');
+
+      if (cars.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9">No cars found.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = '';
+
+      for (var i = 0; i < cars.length; i++) {
+        var car = cars[i];
+        var row = document.createElement('tr');
+
+        row.innerHTML =
+          '<td>' + car.make    + '</td>' +
+          '<td>' + car.model   + '</td>' +
+          '<td>' + car.colour  + '</td>' +
+          '<td>' + car.year    + '</td>' +
+          '<td>£' + car.price.toLocaleString() + '</td>' +
+          '<td>' + car.mileage.toLocaleString() + '</td>' +
+          '<td>' + FUEL_TYPES[car.fuelType]  + '</td>' +
+          '<td>' + GEARBOXES[car.gearbox]    + '</td>' +
+          '<td><button onclick="editCar(\'' + car.id + '\')">Edit</button>' +
+               '<button onclick="deleteCar(\'' + car.id + '\')">Delete</button></td>';
+
+        tbody.appendChild(row);
+      }
+    }
+
+    // ── ADD A CAR ──
+    function addCar() {
+      var car = {
+        make:       document.getElementById('add-make').value,
+        model:      document.getElementById('add-model').value,
+        colour:     document.getElementById('add-colour').value,
+        year:       parseInt(document.getElementById('add-year').value) || 0,
+        price:      parseFloat(document.getElementById('add-price').value) || 0,
+        mileage:    parseInt(document.getElementById('add-mileage').value) || 0,
+        bodyType:   parseInt(document.getElementById('add-bodyType').value),
+        gearbox:    parseInt(document.getElementById('add-gearbox').value),
+        fuelType:   parseInt(document.getElementById('add-fuelType').value),
+        doors:      parseInt(document.getElementById('add-doors').value) || 0,
+        seats:      parseInt(document.getElementById('add-seats').value) || 0,
+        engineSize: parseFloat(document.getElementById('add-engineSize').value) || 0,
+        bootSpace:  parseInt(document.getElementById('add-bootSpace').value) || 0
+      };
+
+      fetch(BASE_URL + '/api/Cars', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(car)
+      })
+        .then(function(response) { return response.json(); })
+        .then(function(result) {
+          if (result) {
+            showMessage('Car added successfully.');
+            loadCars();
+          } else {
+            showMessage('Failed to add car.');
+          }
+        })
+        .catch(function() { showMessage('Could not connect to the API.'); });
+    }
+
+    // ── OPEN EDIT FORM ──
+    function editCar(id) {
+      fetch(BASE_URL + '/api/Cars/' + id)
+        .then(function(response) { return response.json(); })
+        .then(function(car) {
+          document.getElementById('edit-id').value         = car.id;
+          document.getElementById('edit-id-display').textContent = car.id;
+          document.getElementById('edit-make').value       = car.make;
+          document.getElementById('edit-model').value      = car.model;
+          document.getElementById('edit-colour').value     = car.colour;
+          document.getElementById('edit-year').value       = car.year;
+          document.getElementById('edit-price').value      = car.price;
+          document.getElementById('edit-mileage').value    = car.mileage;
+          document.getElementById('edit-bodyType').value   = car.bodyType;
+          document.getElementById('edit-gearbox').value    = car.gearbox;
+          document.getElementById('edit-fuelType').value   = car.fuelType;
+          document.getElementById('edit-doors').value      = car.doors;
+          document.getElementById('edit-seats').value      = car.seats;
+          document.getElementById('edit-engineSize').value = car.engineSize;
+          document.getElementById('edit-bootSpace').value  = car.bootSpace;
+
+          document.getElementById('edit-section').style.display = 'block';
+          document.getElementById('edit-section').scrollIntoView();
+        })
+        .catch(function() { showMessage('Could not load car.'); });
+    }
+
+    // ── SAVE EDIT ──
+    function updateCar() {
+      var id = document.getElementById('edit-id').value;
+
+      var car = {
+        id:         id,
+        make:       document.getElementById('edit-make').value,
+        model:      document.getElementById('edit-model').value,
+        colour:     document.getElementById('edit-colour').value,
+        year:       parseInt(document.getElementById('edit-year').value) || 0,
+        price:      parseFloat(document.getElementById('edit-price').value) || 0,
+        mileage:    parseInt(document.getElementById('edit-mileage').value) || 0,
+        bodyType:   parseInt(document.getElementById('edit-bodyType').value),
+        gearbox:    parseInt(document.getElementById('edit-gearbox').value),
+        fuelType:   parseInt(document.getElementById('edit-fuelType').value),
+        doors:      parseInt(document.getElementById('edit-doors').value) || 0,
+        seats:      parseInt(document.getElementById('edit-seats').value) || 0,
+        engineSize: parseFloat(document.getElementById('edit-engineSize').value) || 0,
+        bootSpace:  parseInt(document.getElementById('edit-bootSpace').value) || 0
+      };
+
+      fetch(BASE_URL + '/api/Cars/' + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(car)
+      })
+        .then(function(response) { return response.json(); })
+        .then(function(result) {
+          if (result) {
+            showMessage('Car updated successfully.');
+            cancelEdit();
+            loadCars();
+          } else {
+            showMessage('Failed to update car.');
+          }
+        })
+        .catch(function() { showMessage('Could not connect to the API.'); });
+    }
+
+    // ── DELETE ──
+    function deleteCar(id) {
+      if (!confirm('Delete this car?')) return;
+
+      fetch(BASE_URL + '/api/Cars/' + id, { method: 'DELETE' })
+        .then(function(response) { return response.json(); })
+        .then(function(result) {
+          if (result) {
+            showMessage('Car deleted.');
+            loadCars();
+          } else {
+            showMessage('Failed to delete car.');
+          }
+        })
+        .catch(function() { showMessage('Could not connect to the API.'); });
+    }
+
+    // ── CANCEL EDIT ──
+    function cancelEdit() {
+      document.getElementById('edit-section').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

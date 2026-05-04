@@ -20,7 +20,7 @@ public class CarRepository : ICarRepository
 
     public Task<IEnumerable<Car>> GetAllAsync()
     {
-        return Task.FromResult(_cars.AsEnumerable());
+        return Task.FromResult(_cars.ToList().AsEnumerable());
     }
 
     public Task<bool> UpdateAsync(Car car)

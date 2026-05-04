@@ -1,5 +1,5 @@
 ﻿namespace CMS_ClassLibrary.Models;
-public enum BodyTypes
+public enum CarBodyType
 {
     Pickup,
     Saloon,
@@ -11,13 +11,13 @@ public enum BodyTypes
     Convertible
 }
 
-public enum Gearboxes
+public enum CarGearboxType
 {
     Manual,
     Automatic
 }
 
-public enum FuelTypes
+public enum CarFuelType
 {
     Petrol,
     Diesel,
@@ -34,12 +34,12 @@ public class Car
     public int Year { get; set; }
     public decimal Price { get; set; }
     public int Mileage { get; set; }
-    public Gearboxes Gearbox { get; set; } 
-    public BodyTypes BodyType { get; set; }
+    public CarGearboxType Gearbox { get; set; } 
+    public CarBodyType BodyType { get; set; }
     public int Doors { get; set; }
-    public int Seat { get; set; }
+    public int Seats { get; set; }
     public decimal EngineSize { get; set; }
     public int BootSpace { get; set; }
-    public FuelTypes FuelType { get; set; }
+    public CarFuelType FuelType { get; set; }
 
 }
